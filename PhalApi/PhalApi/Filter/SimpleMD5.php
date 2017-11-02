@@ -1,11 +1,22 @@
-# wx-nba-api
-wx-nba-api 是为nba小程序提供的api接口、抓取其他网站NBA新闻直播、球队、球员数据
-集成
-* 拦截器，
-* 接口签名校验、
-* PhpQuery爬虫集成
+<?php
+/**
+ * PhalApi_Filter_SimpleMD5 简单的MD5拦截器
+ *
+ * - 签名的方案如下：
+ *
+ * + 1、排除签名参数（默认是sign）
+ * + 2、将剩下的全部参数，按参数名字进行字典排序
+ * + 3、将排序好的参数，全部用字符串拼接起来
+ * + 4、进行md5运算
+ *
+ * 注意：无任何参数时，不作验签
+ *
+ * @package     PhalApi\Filter
+ * @license     http://www.phalapi.net/license GPL 协议
+ * @link        http://www.phalapi.net/
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-10-23
+ */
 
-```php
 class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter {
 
     protected $signName;
@@ -36,8 +47,9 @@ class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter {
             $expectSign = $this->encryptAppKey($allParams);
 
             if ($expectSign != $sign) {
-                DI()->logger->debug('Wrong Sign', array('needSign' => $expectSign));
-                throw new PhalApi_Exception_BadRequest(T('wrong sign'), 6);
+                DI()->logger->debug('Wrong Sign', array('needSign' => $expectSign)); //输出日志信息
+                //throw new PhalApi_Exception_BadRequest(T('wrong sign'), 6);
+                throw new PhalApi_Exception_BadRequest("sign参数签名错误:".$expectSign);
             }
         }
     }
@@ -54,5 +66,3 @@ class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter {
 
     }
 }
-
-```

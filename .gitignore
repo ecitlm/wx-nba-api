@@ -1,0 +1,16 @@
+.settings
+.settings/*
+.buildpath
+.project
+*.log
+./Demo/Api/DogstarTest.php
+Demo/Api/DogstarTest.php
+
+*.bak
+./idea
+*.dat
+*.zip
+*.tar
+.idea
+*.swp
+.idea
