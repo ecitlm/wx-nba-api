@@ -263,6 +263,10 @@ class Api_Nba extends PhalApi_Api
     public function img()
     {
         $filename = $this->imgurl;
+        header('content-type: image/jpeg');
+        echo file_get_contents($filename);
+        die();
+        /*$filename = $this->imgurl;
         $size = getimagesize($filename);
         $fp = fopen($filename, "rb");
         if ($size && $fp) {
@@ -271,7 +275,7 @@ class Api_Nba extends PhalApi_Api
             exit;
         } else {
             echo "<img src='https://code.it919.cn/img/head.jpg'>";
-        }
+        }*/
     }
 
 }
