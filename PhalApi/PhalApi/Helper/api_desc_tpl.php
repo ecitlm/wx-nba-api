@@ -156,7 +156,7 @@ $version = PHALAPI_VERSION;
 echo <<<EOT
         <div class="ui  ">
         </div>
-       <p>&copy; Powered  By <a href="http://www.phalapi.net/" target="_blank">PhalApi {$version}</a> <p>
+       <p>&copy; Powered  By <a href="http://code.it919.cn/" target="_blank">IT开发者 {$version}</a> <p>
         </div>
     </div>
 </body>

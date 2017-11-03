@@ -2,9 +2,10 @@
 
 /**
  * NBA赛事API
- * User: Administrator
- * Date: 2017/6/22
- * Time: 16:55
+ * Date: 2017/11/02
+ * @Time: 21:55
+ * @author  ecitlm, http://code.it919.cn/
+ * @copyright 2017 ecitlm
  */
 class Api_Nba extends PhalApi_Api
 {
@@ -207,7 +208,7 @@ class Api_Nba extends PhalApi_Api
     }
 
     /**
-     * 网易NBA新闻详情
+     *  NBA篮球快讯新闻详情
      * @method GET请求
      * @desc NBA新闻内容详情
      * @url http://192.168.1.2:8080/?service=Nba.news_info&docid=D22DCS5S0005877U

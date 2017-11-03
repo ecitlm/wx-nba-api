@@ -42,5 +42,6 @@ return array(
         'Index.index'
     ),
 
-    'apiUrl' => "https://live.3g.qq.com",
+    'proUrl' => "https://wx.it919.cn",
+    'devUrl' => "192.168.1.2:8080",
 );
