@@ -28,5 +28,5 @@ return array(
     /**
      * 签名appkey
      */
-    'appkey' => 'wxnba2017',
+    'appkey' => 'wxnba201711',
 );

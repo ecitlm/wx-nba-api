@@ -22,16 +22,16 @@ return array(
      * - Default.Index  指定某个接口服务，即Api_Default::Index()
      */
     'service_whitelist' => array(
-        'Default.Index',
+        'Index.index',
     ),
 
     /**
      * 不需要带签名的接口
      */
     'apiFilterRules' => array(
-        'Default.Index',
+        'Index.index',
         'Nba.img',
-        'Nba.Lineup',
+        'Nba.website',
     ),
 
     /**
@@ -42,6 +42,5 @@ return array(
         'Index.index'
     ),
 
-    'proUrl' => "https://wx.it919.cn",
-    'devUrl' => "192.168.1.2:8080",
+    'ProUrl' => "https://live.3g.qq.com",
 );

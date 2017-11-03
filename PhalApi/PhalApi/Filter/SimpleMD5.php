@@ -48,8 +48,8 @@ class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter {
 
             if ($expectSign != $sign) {
                 DI()->logger->debug('Wrong Sign', array('needSign' => $expectSign)); //输出日志信息
-                //throw new PhalApi_Exception_BadRequest(T('wrong sign'), 6);
-                throw new PhalApi_Exception_BadRequest("sign参数签名错误:".$expectSign);
+                throw new PhalApi_Exception_BadRequest(T('wrong sign'), 6);
+                //throw new PhalApi_Exception_BadRequest("sign参数签名错误:".$expectSign);
             }
         }
     }
