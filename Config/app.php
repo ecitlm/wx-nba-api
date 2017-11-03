@@ -22,7 +22,7 @@ return array(
      * - Default.Index  指定某个接口服务，即Api_Default::Index()
      */
     'service_whitelist' => array(
-        'Default.Index',
+        'Index.index',
     ),
 
     /**

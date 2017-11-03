@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 1NBA赛事API
+ * NBA赛事API
  * Date: 2017/11/02
  * @Time: 21:55
  * @author  ecitlm, http://code.it919.cn/
