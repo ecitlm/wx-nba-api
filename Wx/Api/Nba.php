@@ -245,10 +245,10 @@ class Api_Nba extends PhalApi_Api
                 'mail' => "ecitlm@163.com",
                 'Motto' => '我们这一生，要走很远的路，有如水坦途，有荆棘挡道；有簇拥同行，有孤独漫步；有幸福如影，有苦痛袭扰；有迅跑，有疾走，有徘徊，还有回首……正因为走了许多路，经历的无数繁华与苍凉，才在时光的流逝中体会岁月的变迁，让曾经稚嫩的心慢慢地趋于成熟。',
                 'music' => [
-                    'src' => "https://coding.it919.cn/static/images/better_man.mp3",
+                    'src' => "https://coding.it919.cn/static/images/lzxs.mp3",
                     'author' => "Robbie Williams",
                     'name' => "Better Man",
-                    'poster' => "https://coding.it919.cn/static/images/poster.jpg"
+                    'poster' => "https://coding.it919.cn/static/images/lzxs.jpg"
                 ]
         ];
     }
@@ -266,16 +266,6 @@ class Api_Nba extends PhalApi_Api
         header('content-type: image/jpeg');
         echo file_get_contents($filename);
         die();
-        /*$filename = $this->imgurl;
-        $size = getimagesize($filename);
-        $fp = fopen($filename, "rb");
-        if ($size && $fp) {
-            header("Content-type: {$size['mime']}");
-            fpassthru($fp);
-            exit;
-        } else {
-            echo "<img src='https://code.it919.cn/img/head.jpg'>";
-        }*/
     }
 
 }
