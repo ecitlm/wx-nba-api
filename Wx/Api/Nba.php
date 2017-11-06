@@ -188,6 +188,17 @@ class Api_Nba extends PhalApi_Api
     }
 
     /**
+     * NBA联盟数据排名
+     * @method 得分篮板助攻抢断三分等等排名
+     * @desc 球队阵容球员列表
+     * @url http://192.168.1.2:8080/?service=Nba.player_top
+     */
+    public function player_top(){
+        $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=player_top2");
+        return json_decode($res, true)['player_top2'];
+    }
+
+    /**
      * NBA新闻列表
      * @method GET请求
      * @desc NBA新闻篮球快讯
