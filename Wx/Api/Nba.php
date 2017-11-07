@@ -41,6 +41,10 @@ class Api_Nba extends PhalApi_Api
             'team_info' => array(
                 'teamId' => array('name' => 'teamId', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
+            'team_schedule' => array(
+                'teamId' => array('name' => 'teamId', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
+                'mouth' => array('name' => 'mouth', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '每月的赛程月份'),
+            ),
             'Lineup' => array(
                 'teamId' => array('name' => 'teamId', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
@@ -172,6 +176,22 @@ class Api_Nba extends PhalApi_Api
         $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=team_detail&teamId={$id}&sid=");
         return json_decode($res, true)['team_detail'];
     }
+
+      /**
+     * 球队赛程
+     * @method GET请求
+     * @desc 球队每月赛程
+     * @url http://192.168.1.2:8080/?service=Nba.team_schedule&teamId=15&mouth=11
+     */
+    public function team_schedule(){
+         $id = $this->teamId;
+        $mouth == $this->mouth;
+        $res = $this->httpCurl("https://nb.3g.qq.com/nba/api/schedule@getMonthListByTeam?teamid={$id}&mouth={$mouth}&sid=");
+        return json_decode($res, true)['schedule@getMonthListByTeam']['data'];
+    }
+
+
+
 
     /**
      * 球队阵容
