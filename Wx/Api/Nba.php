@@ -36,14 +36,14 @@ class Api_Nba extends PhalApi_Api
                 'schid' => array('name' => 'schid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => 'schid'),
             ),
             'player_detail' => array(
-                'playerid' => array('name' => 'playerid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球员id'),
+                'playerid' => array('name' => 'playerid', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球员id'),
             ),
             'team_info' => array(
-                'teamId' => array('name' => 'teamId', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
+                'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
             'team_schedule' => array(
-                'teamId' => array('name' => 'teamId', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
-                'mouth' => array('name' => 'mouth', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '每月的赛程月份'),
+                'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
+                'mouth' => array('name' => 'mouth', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '每月的赛程月份'),
             ),
             'Lineup' => array(
                 'teamId' => array('name' => 'teamId', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
@@ -185,7 +185,7 @@ class Api_Nba extends PhalApi_Api
      */
     public function team_schedule(){
          $id = $this->teamId;
-        $mouth == $this->mouth;
+        $mouth = $this->mouth;
         $res = $this->httpCurl("https://nb.3g.qq.com/nba/api/schedule@getMonthListByTeam?teamid={$id}&mouth={$mouth}&sid=");
         return json_decode($res, true)['schedule@getMonthListByTeam']['data'];
     }

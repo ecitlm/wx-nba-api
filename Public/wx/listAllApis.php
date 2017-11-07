@@ -164,7 +164,7 @@ $table_color_arr = explode(" ", "red orange yellow olive teal blue violet purple
 
 
 <div class="ui text container" style="max-width: none !important; width: 1200px">
-	<h3>小明NBA赛事直播小程序在线接口系统</h3>
+	<h3>小明NBA赛事直播小程序-在线接口文档</h3>
     <div class="ui floating message">
         <div class="ui grid container" style="max-width: none !important;">
 
