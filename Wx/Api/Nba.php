@@ -46,7 +46,7 @@ class Api_Nba extends PhalApi_Api
                 'mouth' => array('name' => 'mouth', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '每月的赛程月份'),
             ),
             'Lineup' => array(
-                'teamId' => array('name' => 'teamId', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
+                'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
             'new_list' => array(
                 'page' => array('name' => 'page', 'type' => 'int', 'min' => '0', 'default' => '0', 'require' => true, 'desc' => 'page第几页页数、每页返回15条'),
