@@ -156,6 +156,7 @@ $table_color_arr = explode(" ", "red orange yellow olive teal blue violet purple
     <link href="//cdn.bootcss.com/semantic-ui/2.2.2/semantic.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/semantic-ui/2.2.2/semantic.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="  https://code.it919.cn/favicon.ico" />
     <meta name="robots" content="none"/>
 </head>
 <body>

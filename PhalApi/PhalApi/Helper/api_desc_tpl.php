@@ -11,6 +11,7 @@ echo <<<EOT
     <link rel="stylesheet" href="https://staticfile.qnssl.com/semantic-ui/2.1.6/components/container.min.css">
     <link rel="stylesheet" href="https://staticfile.qnssl.com/semantic-ui/2.1.6/components/message.min.css">
     <link rel="stylesheet" href="https://staticfile.qnssl.com/semantic-ui/2.1.6/components/label.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="  https://code.it919.cn/favicon.ico" />
     <style>
     html,body{font-size:13px}
     a{display:block;}
