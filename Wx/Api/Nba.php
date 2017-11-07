@@ -190,9 +190,6 @@ class Api_Nba extends PhalApi_Api
         return json_decode($res, true)['schedule@getMonthListByTeam']['data'];
     }
 
-
-
-
     /**
      * 球队阵容
      * @method GET请求

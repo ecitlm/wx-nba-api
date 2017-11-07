@@ -44,7 +44,7 @@ SL('zh_cn');
 
 
 // 签名验证服务
-//DI()->filter = 'PhalApi_Filter_SimpleMD5';
+DI()->filter = 'PhalApi_Filter_SimpleMD5';
 
 
 
