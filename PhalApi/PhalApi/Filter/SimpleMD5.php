@@ -33,23 +33,34 @@ class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter {
 
         $service = DI()->request->get('service');
         $app=DI()->config->get('app');
-        $apiFilterRules = $app['apiFilterRules'];
+        $apiFilterRules = $app['apiFilterRules'];//获取不需要签名的接口配置文件
         if (!in_array($service,$apiFilterRules)) {
-            $allParams = DI()->request->getAll();
-
+            $allParams = DI()->request->getAll();//获取所有的参数
             $sign = isset($allParams[$this->signName]) ? $allParams[$this->signName] : '';
-            unset($allParams[$this->signName]);
-            unset($allParams['service']);
+            $timestamp = isset($allParams['timestamp']) ? $allParams['timestamp'] : '';
+            //判断接口请求时间问题
+            if(empty($timestamp)) {
+                throw new PhalApi_Exception_BadRequest("缺少时间戳参数", 6);
+            }
+            $times = time() * 1000;
+            //一个接口请求能使用300秒有效期
+            if ($times - floatval($timestamp) >300000) {
+                throw new PhalApi_Exception_BadRequest("接口请求超时", 6);
+            }
+
+            if (empty($sign)) {
+                throw new PhalApi_Exception_BadRequest("缺少必要sign参数", 6);
+            }
+            unset($allParams[$this->signName]); //移除sign自身
+            unset($allParams['service']);//移除接口类名
 
             //加上appkey
             $sys = DI()->config->get('sys');
             $allParams['appkey'] = $sys['appkey'];
-            $expectSign = $this->encryptAppKey($allParams);
-
+            $expectSign = $this->encryptAppKey($allParams);//生成签名
             if ($expectSign != $sign) {
                 DI()->logger->debug('Wrong Sign', array('needSign' => $expectSign)); //输出日志信息
                 throw new PhalApi_Exception_BadRequest(T('wrong sign'), 6);
-                //throw new PhalApi_Exception_BadRequest("sign参数签名错误:".$expectSign);
             }
         }
     }

@@ -23,22 +23,28 @@ class Api_Nba extends PhalApi_Api
     {
         return array(
             'schedule' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'date' => array('name' => 'date', 'type' => 'string', 'min' => '', 'default' => '', 'require' => false, 'desc' => '直播时间、默认为当前日期'),
             ),
             'live_detail' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'schid' => array('name' => 'schid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '直播schid'),
                 'liveid' => array('name' => 'liveid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '直播liveid'),
             ),
             'live_content' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'schid' => array('name' => 'schid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => 'schid'),
             ),
             'technical_statistics' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'schid' => array('name' => 'schid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => 'schid'),
             ),
             'player_detail' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'playerid' => array('name' => 'playerid', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球员id'),
             ),
             'team_info' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
             'team_schedule' => array(
@@ -46,12 +52,14 @@ class Api_Nba extends PhalApi_Api
                 'mouth' => array('name' => 'mouth', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '每月的赛程月份'),
             ),
             'Lineup' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
             'new_list' => array(
                 'page' => array('name' => 'page', 'type' => 'int', 'min' => '0', 'default' => '0', 'require' => true, 'desc' => 'page第几页页数、每页返回15条'),
             ),
             'news_info' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'docid' => array('name' => 'docid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '文章详情id'),
             ),
             'img' => array(

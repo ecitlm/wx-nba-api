@@ -10,6 +10,7 @@ return array(
      */
     'apiCommonRules' => array(
         //'sign' => array('name' => 'sign', 'require' => true),
+        'timestamp' => array('name'=>'timestamp', 'type'=>'string', 'require'=>false, 'desc'=>'时间戳,需要签名的参数必填')
     ),
 
     /**
