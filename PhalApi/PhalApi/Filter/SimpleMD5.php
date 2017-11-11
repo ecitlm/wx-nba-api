@@ -52,7 +52,7 @@ class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter
             if ($times - floatval($timestamp) > 300000) {
                 throw new PhalApi_Exception_BadRequest("接口请求超时", 6);
             }
-            
+
             if (empty($sign)) {
                 throw new PhalApi_Exception_BadRequest("缺少必要sign参数", 6);
             }
