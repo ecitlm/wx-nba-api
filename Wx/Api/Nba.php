@@ -257,7 +257,6 @@ class Api_Nba extends PhalApi_Api
         $res = $this->httpCurl("http://3g.163.com/touch/article/{$id}/full.html");
         $arr = json_decode(substr($res, 12, -1), true);
         unset($arr[$id]['relate']);
-
         return $arr[$id];
     }
 
