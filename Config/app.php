@@ -33,6 +33,7 @@ return array(
         'Index.index',
         'Nba.img',
         'Nba.website',
+        'Nba.new_list'
     ),
 
     /**

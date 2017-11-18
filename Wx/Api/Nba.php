@@ -62,6 +62,13 @@ class Api_Nba extends PhalApi_Api
                 'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'docid' => array('name' => 'docid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '文章详情id'),
             ),
+            
+             'news_comments' => array(
+                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
+                'docid' => array('name' => 'docid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '文章详情id'),
+            ),
+
+
             'img' => array(
                 'imgurl' => array('name' => 'imgurl', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '图片代理地址'),
             ),
@@ -235,9 +242,12 @@ class Api_Nba extends PhalApi_Api
         $res = $this->httpCurl("https://3g.163.com/touch/reconstruct/article/list/BD2AQH4Qwangning/{$page}-15.html");
         $arr = json_decode(substr($res, 9, -1), true)['BD2AQH4Qwangning'];
         //数据里面有一些直播的新闻数据、需要删除那些数据
+        $newArr = array();
         foreach ($arr as $k => $v) {
             if (!empty($arr[$k]['liveInfo'])) {
                 unset($arr[$k]);
+            }else{
+                array_push($newArr, $arr[$k]);
             }
         }
         return $arr;
@@ -258,6 +268,26 @@ class Api_Nba extends PhalApi_Api
         $arr = json_decode(substr($res, 12, -1), true);
         unset($arr[$id]['relate']);
         return $arr[$id];
+    }
+
+     /**
+     *  NBA篮球快讯新闻详情评论
+     * @method GET请求
+     * @desc NBA新闻内容详情评论
+     * @url http://192.168.1.2:8080/?service=Nba.news_comments&docid=D22DCS5S0005877U
+     * @return string  body   文章内容
+     * @return string bodyBottomAd.title 文章标题
+     */
+    public function news_comments(){
+         $id =$this->docid;
+         $res = $this->httpCurl("https://comment.news.163.com/api/v1/products/a2869674571f77b5a0867c3d71db5856/threads/{$id}/comments/newList?offset=0&limit=20&headLimit=1&tailLimit=2&ibc=newswap&showLevelThresho");
+         $arr = json_decode($res, true)['comments'];
+         $newArr = array();
+         foreach ($arr as $k => $v) {
+            array_push($newArr, $arr[$k]);
+         }
+         return $newArr;
+
     }
 
     /**
