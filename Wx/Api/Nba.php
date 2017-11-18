@@ -176,7 +176,7 @@ class Api_Nba extends PhalApi_Api
     public function team_rank()
     {
         $res = $this->httpCurl("https://matchweb.sports.qq.com/rank/team?columnId=100000&from=NBA");
-        return json_decode($res, true)['player_detail'];
+        return json_decode($res, true)[1];
     }
 
     /**
