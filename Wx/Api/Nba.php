@@ -250,7 +250,7 @@ class Api_Nba extends PhalApi_Api
                 array_push($newArr, $arr[$k]);
             }
         }
-        return $arr;
+        return $newArr;
     }
 
     /**
