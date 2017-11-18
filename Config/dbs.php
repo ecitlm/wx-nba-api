@@ -30,16 +30,5 @@ return array(
                 array('db' => 'db_phalapi'),
             ),
         ),
-
-        /**
-        'demo' => array(                                                //表名
-            'prefix' => '',                                     //表名前缀
-            'key' => 'id',                                              //表主键名
-            'map' => array(                                             //表路由配置
-                array('db' => 'db_phalapi'),                               //单表配置：array('db' => 服务器标记)
-                array('start' => 0, 'end' => 2, 'db' => 'db_phalapi'),     //分表配置：array('start' => 开始下标, 'end' => 结束下标, 'db' => 服务器标记)
-            ),
-        ),
-         */
     ),
 );
