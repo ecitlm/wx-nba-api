@@ -39,7 +39,7 @@ return array(
      * 需要带Token的接口
      */
     'apiTokenRules' => array(
-        'Cart.GetCart',
+        'User.index',
         'Index.index'
     ),
 
