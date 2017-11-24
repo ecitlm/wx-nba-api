@@ -14,8 +14,8 @@ Demo/Api/DogstarTest.php
 .idea
 *.swp
 .idea
-Blog/*
-Blog/
+./Blog/*
+./Blog/
 blog/
 blog/*
 Public/blog/*
