@@ -23,28 +23,23 @@ class Api_Nba extends PhalApi_Api
     {
         return array(
             'schedule' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'date' => array('name' => 'date', 'type' => 'string', 'min' => '', 'default' => '', 'require' => false, 'desc' => '直播时间、默认为当前日期'),
             ),
             'live_detail' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'schid' => array('name' => 'schid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '直播schid'),
                 'liveid' => array('name' => 'liveid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '直播liveid'),
             ),
             'live_content' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'schid' => array('name' => 'schid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => 'schid'),
             ),
             'technical_statistics' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'schid' => array('name' => 'schid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => 'schid'),
             ),
             'player_detail' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'playerid' => array('name' => 'playerid', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球员id'),
             ),
             'team_info' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
+                'sign' => array('name' => 'sign', 'type' => 'string', 'require' => true, 'desc' => '接口签名'),
                 'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
             'team_schedule' => array(
@@ -52,30 +47,29 @@ class Api_Nba extends PhalApi_Api
                 'mouth' => array('name' => 'mouth', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '每月的赛程月份'),
             ),
             'Lineup' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
             'new_list' => array(
                 'page' => array('name' => 'page', 'type' => 'int', 'min' => '0', 'default' => '0', 'require' => true, 'desc' => 'page第几页页数、每页返回15条'),
             ),
             'news_info' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
-                'docid' => array('name' => 'docid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '文章详情id'),
-            ),
-            
-             'news_comments' => array(
-                'sign' => array('name'=>'sign', 'type'=>'string', 'require'=>true, 'desc'=>'接口签名'),
                 'docid' => array('name' => 'docid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '文章详情id'),
             ),
 
-
+            'news_comments' => array(
+                'docid' => array('name' => 'docid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '文章详情id'),
+            ),
             'img' => array(
+                'sign' => array('name' => 'sign', 'type' => 'string', 'require' => false, 'desc' => '接口签名、该接口可以不要'),
                 'imgurl' => array('name' => 'imgurl', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '图片代理地址'),
+                'timestamp' => array('name'=>'timestamp', 'type'=>'string', 'require'=>false, 'desc'=>'时间戳参数、该接口可以不要')
             ),
-
+            'website' => array(
+                'sign' => array('name' => 'sign', 'type' => 'string', 'require' => false, 'desc' => '接口签名、该接口可以不要'),
+                'timestamp' => array('name'=>'timestamp', 'type'=>'string', 'require'=>false, 'desc'=>'时间戳参数、该接口可以不要')
+            ),
         );
     }
-
 
     /**
      * @param $url
@@ -192,14 +186,15 @@ class Api_Nba extends PhalApi_Api
         return json_decode($res, true)['team_detail'];
     }
 
-      /**
+    /**
      * 球队赛程
      * @method GET请求
      * @desc 球队每月赛程
      * @url http://192.168.1.2:8080/?service=Nba.team_schedule&teamId=15&mouth=11
      */
-    public function team_schedule(){
-         $id = $this->teamId;
+    public function team_schedule()
+    {
+        $id = $this->teamId;
         $mouth = $this->mouth;
         $res = $this->httpCurl("https://nb.3g.qq.com/nba/api/schedule@getMonthListByTeam?teamid={$id}&mouth={$mouth}&sid=");
         return json_decode($res, true)['schedule@getMonthListByTeam']['data'];
@@ -225,7 +220,8 @@ class Api_Nba extends PhalApi_Api
      * @desc 球队阵容球员列表
      * @url http://192.168.1.2:8080/?service=Nba.player_top
      */
-    public function player_top(){
+    public function player_top()
+    {
         $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=player_top2");
         return json_decode($res, true)['player_top2'];
     }
@@ -246,7 +242,7 @@ class Api_Nba extends PhalApi_Api
         foreach ($arr as $k => $v) {
             if (!empty($arr[$k]['liveInfo'])) {
                 unset($arr[$k]);
-            }else{
+            } else {
                 array_push($newArr, $arr[$k]);
             }
         }
@@ -263,14 +259,14 @@ class Api_Nba extends PhalApi_Api
      */
     public function news_info()
     {
-        $id =$this->docid ;
+        $id = $this->docid;
         $res = $this->httpCurl("http://3g.163.com/touch/article/{$id}/full.html");
         $arr = json_decode(substr($res, 12, -1), true);
         unset($arr[$id]['relate']);
         return $arr[$id];
     }
 
-     /**
+    /**
      *  NBA篮球快讯新闻详情评论
      * @method GET请求
      * @desc NBA新闻内容详情评论
@@ -278,15 +274,16 @@ class Api_Nba extends PhalApi_Api
      * @return string  body   文章内容
      * @return string bodyBottomAd.title 文章标题
      */
-    public function news_comments(){
-         $id =$this->docid;
-         $res = $this->httpCurl("https://comment.news.163.com/api/v1/products/a2869674571f77b5a0867c3d71db5856/threads/{$id}/comments/newList?offset=0&limit=20&headLimit=1&tailLimit=2&ibc=newswap&showLevelThresho");
-         $arr = json_decode($res, true)['comments'];
-         $newArr = array();
-         foreach ($arr as $k => $v) {
+    public function news_comments()
+    {
+        $id = $this->docid;
+        $res = $this->httpCurl("https://comment.news.163.com/api/v1/products/a2869674571f77b5a0867c3d71db5856/threads/{$id}/comments/newList?offset=0&limit=20&headLimit=1&tailLimit=2&ibc=newswap&showLevelThresho");
+        $arr = json_decode($res, true)['comments'];
+        $newArr = array();
+        foreach ($arr as $k => $v) {
             array_push($newArr, $arr[$k]);
-         }
-         return $newArr;
+        }
+        return $newArr;
 
     }
 
@@ -299,22 +296,22 @@ class Api_Nba extends PhalApi_Api
     public function website()
     {
         return [
-                'name' => "没有故事的小明同学",
-                'job' => "Web开发工程师",
-                'icon' => "https://coding.it919.cn/static/images/zixia.jpg",
-                'address' => "深圳市南山区科技园",
-                'latitude' => "22.549990",
-                'longitude' => "113.950660",
-                'github' => "https://github.com/ecitlm",
-                'blog' => "https://code.it919.cn",
-                'mail' => "ecitlm@163.com",
-                'Motto' => '我们这一生，要走很远的路，有如水坦途，有荆棘挡道；有簇拥同行，有孤独漫步；有幸福如影，有苦痛袭扰；有迅跑，有疾走，有徘徊，还有回首……正因为走了许多路，经历的无数繁华与苍凉，才在时光的流逝中体会岁月的变迁，让曾经稚嫩的心慢慢地趋于成熟。',
-                'music' => [
-                    'src' => "https://coding.it919.cn/static/images/lzxs.mp3",
-                    'author' => "Robbie Williams",
-                    'name' => "Better Man",
-                    'poster' => "https://coding.it919.cn/static/images/lzxs.jpg"
-                ]
+            'name' => "没有故事的小明同学",
+            'job' => "Web开发工程师",
+            'icon' => "https://coding.it919.cn/static/images/zixia.jpg",
+            'address' => "深圳市南山区科技园",
+            'latitude' => "22.549990",
+            'longitude' => "113.950660",
+            'github' => "https://github.com/ecitlm",
+            'blog' => "https://code.it919.cn",
+            'mail' => "ecitlm@163.com",
+            'Motto' => '我们这一生，要走很远的路，有如水坦途，有荆棘挡道；有簇拥同行，有孤独漫步；有幸福如影，有苦痛袭扰；有迅跑，有疾走，有徘徊，还有回首……正因为走了许多路，经历的无数繁华与苍凉，才在时光的流逝中体会岁月的变迁，让曾经稚嫩的心慢慢地趋于成熟。',
+            'music' => [
+                'src' => "https://coding.it919.cn/static/images/lzxs.mp3",
+                'author' => "Robbie Williams",
+                'name' => "Better Man",
+                'poster' => "https://coding.it919.cn/static/images/lzxs.jpg"
+            ]
         ];
     }
 

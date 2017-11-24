@@ -9,8 +9,8 @@ return array(
      * 应用接口层的统一参数
      */
     'apiCommonRules' => array(
-        //'sign' => array('name' => 'sign', 'require' => true),
-        'timestamp' => array('name'=>'timestamp', 'type'=>'string', 'require'=>false, 'desc'=>'时间戳,需要签名的参数必填')
+        'sign' => array('name' => 'sign', 'require' => true,'desc'=>'接口签名、必填'),
+        'timestamp' => array('name'=>'timestamp', 'type'=>'string', 'require'=>true, 'desc'=>'时间戳,需要签名的参数必填')
     ),
 
     /**
