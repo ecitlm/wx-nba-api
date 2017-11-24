@@ -20,13 +20,17 @@ http://wxapp.it919.cn/wx/listAllApis.php
 ```
   'appkey' => 'wxnba201711',
 ```
+__关于接口的时间戳参数问题__
+`timestamp` 用来保存接口一次请求的时效性,时间戳参数传递客户端当前的时间戳给服务端、服务端将该时间戳与服务器的时间进行对比,当两个时间戳的差距大于300S时，
+提示接口请求超时,以保证其他人抓取改接口能重复使用
+
 框架通过过滤器可以设置签名 sign 白名单、一些不需要设置签名的接口可以在`app.php`中配置
 ```php
 <?php
 return array(
 
     /**
-     * 应用接口层的统一参数
+     * 应用接口层的统一参数说
      */
     'apiCommonRules' => array(
         'sign' => array('name' => 'sign', 'require' => true),
