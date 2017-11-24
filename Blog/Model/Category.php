@@ -1,7 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2017/11/20
- * Time: 20:32
- */
+
+class Model_Category extends PhalApi_Model_NotORM {
+
+
+
+    /**
+    protected function getTableName($id) {
+    return 'user';
+    }
+     */
+
+    public function index()
+    {
+        $category = DI()->notorm->category;
+        $list = $category->select("*")->limit(10)->fetchRows();
+        return $list;
+    }
+}
