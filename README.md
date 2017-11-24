@@ -1,5 +1,5 @@
 # wx-nba-api
-wx-nba-api 是为nba小程序提供的api接口、抓取其他网站NBA新闻直播、球队、球员数据抓取整理
+wx-nba-api 是为nba小程序[wx-nba](https://github.com/ecitlm/wx-nba)提供的api接口、抓取其他网站NBA新闻直播、球队、球员数据抓取整理
 * 拦截器，
 * 接口签名校验、
 接口服务列表
