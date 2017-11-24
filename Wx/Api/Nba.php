@@ -39,7 +39,6 @@ class Api_Nba extends PhalApi_Api
                 'playerid' => array('name' => 'playerid', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球员id'),
             ),
             'team_info' => array(
-                'sign' => array('name' => 'sign', 'type' => 'string', 'require' => true, 'desc' => '接口签名'),
                 'teamId' => array('name' => 'teamId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球队Id'),
             ),
             'team_schedule' => array(
@@ -329,5 +328,6 @@ class Api_Nba extends PhalApi_Api
         echo file_get_contents($filename);
         die();
     }
+
 
 }

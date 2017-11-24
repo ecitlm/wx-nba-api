@@ -5,7 +5,7 @@ wx-nba-api 是为nba小程序提供的api接口、抓取其他网站NBA新闻直
 接口服务列表
 [在线地址：](http://wxapp.it919.cn/wx/listAllApis.php)
 http://wxapp.it919.cn/wx/listAllApis.php
-![图片](https://dn-coding-net-production-pp.qbox.me/e4eb4eaf-bf92-4455-afce-a8650a2d8ccb.png)
+![图片](https://dn-coding-net-production-pp.qbox.me/2e4887a6-898c-42b9-8662-6657b4bcf1ea.png)
 
 
 #### 关于接口签名问题
@@ -29,8 +29,8 @@ return array(
      * 应用接口层的统一参数
      */
     'apiCommonRules' => array(
-        //'sign' => array('name' => 'sign', 'require' => true),
-        'timestamp' => array('name'=>'timestamp', 'type'=>'string', 'require'=>false, 'desc'=>'时间戳,需要签名的参数时必填')
+        'sign' => array('name' => 'sign', 'require' => true),
+        'timestamp' => array('name'=>'timestamp', 'type'=>'string', 'require'=>false, 'desc'=>'时间戳参数')
     ),
     /**
      * 不需要带签名的接口
