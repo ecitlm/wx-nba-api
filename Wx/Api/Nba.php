@@ -74,7 +74,7 @@ class Api_Nba extends PhalApi_Api
      * @param $url
      * 获取爬虫url数据
      */
-    private function httpCurl($url)
+    private function HttpGet($url)
     {
         return DI()->functions->HttpGet($url);
     }
@@ -92,7 +92,7 @@ class Api_Nba extends PhalApi_Api
     public function schedule()
     {
         $date = $this->date;
-        $res = $this->httpCurl("https://nb.3g.qq.com/nba/api/schedule@getList?md={$date}&sid=");
+        $res = $this->HttpGet("https://nb.3g.qq.com/nba/api/schedule@getList?md={$date}&sid=");
         return json_decode($res, true)['schedule@getList'];
     }
 
@@ -114,7 +114,7 @@ class Api_Nba extends PhalApi_Api
     {
         $schid = $this->schid;
         $liveid = $this->liveid;
-        $res = $this->httpCurl("https://nb.3g.qq.com/nba/api/live@getInfo?i_schid={$schid}&i_liveid={$liveid}");
+        $res = $this->HttpGet("https://nb.3g.qq.com/nba/api/live@getInfo?i_schid={$schid}&i_liveid={$liveid}");
         return json_decode($res, true)['live@getInfo']['data'];
     }
 
@@ -127,7 +127,7 @@ class Api_Nba extends PhalApi_Api
     public function live_content()
     {
         $schid = $this->schid;
-        $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=broadcast_content%2Cbroadcast_info&sch_id={$schid}");
+        $res = $this->HttpGet("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=broadcast_content%2Cbroadcast_info&sch_id={$schid}");
         return json_decode($res, true)['broadcast_content']['contentAry'];
     }
 
@@ -143,7 +143,7 @@ class Api_Nba extends PhalApi_Api
     public function technical_statistics()
     {
         $schid = $this->schid;
-        $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=live_stat_4_nba%2Cbroadcast_info&sch_id={$schid}&bid=2009605");
+        $res = $this->HttpGet("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=live_stat_4_nba%2Cbroadcast_info&sch_id={$schid}&bid=2009605");
         return json_decode($res, true)['live_stat_4_nba'];
     }
 
@@ -156,7 +156,7 @@ class Api_Nba extends PhalApi_Api
     public function player_detail()
     {
         $playerid = $this->playerid;
-        $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=player_detail&playerId={$playerid}&sid=");
+        $res = $this->HttpGet("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=player_detail&playerId={$playerid}&sid=");
         return json_decode($res, true)['player_detail'];
     }
 
@@ -168,7 +168,7 @@ class Api_Nba extends PhalApi_Api
      */
     public function team_rank()
     {
-        $res = $this->httpCurl("https://matchweb.sports.qq.com/rank/team?columnId=100000&from=NBA");
+        $res = $this->HttpGet("https://matchweb.sports.qq.com/rank/team?columnId=100000&from=NBA");
         return json_decode($res, true)[1];
     }
 
@@ -181,7 +181,7 @@ class Api_Nba extends PhalApi_Api
     public function team_info()
     {
         $id = $this->teamId;
-        $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=team_detail&teamId={$id}&sid=");
+        $res = $this->HttpGet("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=team_detail&teamId={$id}&sid=");
         return json_decode($res, true)['team_detail'];
     }
 
@@ -195,7 +195,7 @@ class Api_Nba extends PhalApi_Api
     {
         $id = $this->teamId;
         $mouth = $this->mouth;
-        $res = $this->httpCurl("https://nb.3g.qq.com/nba/api/schedule@getMonthListByTeam?teamid={$id}&mouth={$mouth}&sid=");
+        $res = $this->HttpGet("https://nb.3g.qq.com/nba/api/schedule@getMonthListByTeam?teamid={$id}&mouth={$mouth}&sid=");
         return json_decode($res, true)['schedule@getMonthListByTeam']['data'];
     }
 
@@ -209,7 +209,7 @@ class Api_Nba extends PhalApi_Api
     {
 
         $id = $this->teamId;
-        $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=team_player&teamId={$id}&sid=");
+        $res = $this->HttpGet("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=team_player&teamId={$id}&sid=");
         return json_decode($res, true)['team_player']['players'];
     }
 
@@ -221,7 +221,7 @@ class Api_Nba extends PhalApi_Api
      */
     public function player_top()
     {
-        $res = $this->httpCurl("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=player_top2");
+        $res = $this->HttpGet("https://live.3g.qq.com/g/s?aid=action_api&module=nba&action=player_top2");
         return json_decode($res, true)['player_top2'];
     }
 
@@ -234,7 +234,7 @@ class Api_Nba extends PhalApi_Api
     public function new_list()
     {
         $page = $this->page * 15;
-        $res = $this->httpCurl("https://3g.163.com/touch/reconstruct/article/list/BD2AQH4Qwangning/{$page}-15.html");
+        $res = $this->HttpGet("https://3g.163.com/touch/reconstruct/article/list/BD2AQH4Qwangning/{$page}-15.html");
         $arr = json_decode(substr($res, 9, -1), true)['BD2AQH4Qwangning'];
         //数据里面有一些直播的新闻数据、需要删除那些数据
         $newArr = array();
@@ -259,7 +259,7 @@ class Api_Nba extends PhalApi_Api
     public function news_info()
     {
         $id = $this->docid;
-        $res = $this->httpCurl("http://3g.163.com/touch/article/{$id}/full.html");
+        $res = $this->HttpGet("http://3g.163.com/touch/article/{$id}/full.html");
         $arr = json_decode(substr($res, 12, -1), true);
         unset($arr[$id]['relate']);
         return $arr[$id];
@@ -276,7 +276,7 @@ class Api_Nba extends PhalApi_Api
     public function news_comments()
     {
         $id = $this->docid;
-        $res = $this->httpCurl("https://comment.news.163.com/api/v1/products/a2869674571f77b5a0867c3d71db5856/threads/{$id}/comments/newList?offset=0&limit=20&headLimit=1&tailLimit=2&ibc=newswap&showLevelThresho");
+        $res = $this->HttpGet("https://comment.news.163.com/api/v1/products/a2869674571f77b5a0867c3d71db5856/threads/{$id}/comments/newList?offset=0&limit=20&headLimit=1&tailLimit=2&ibc=newswap&showLevelThresho");
         $arr = json_decode($res, true)['comments'];
         $newArr = array();
         foreach ($arr as $k => $v) {

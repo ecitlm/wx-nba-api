@@ -44,4 +44,5 @@ return array(
     ),
 
     'apiUrl' => "https://live.3g.qq.com",
+    'music_api' => "http://m.kugou.com/",
 );

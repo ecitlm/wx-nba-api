@@ -158,13 +158,18 @@ $table_color_arr = explode(" ", "red orange yellow olive teal blue violet purple
     <script src="//cdn.bootcss.com/semantic-ui/2.2.2/semantic.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="  https://code.it919.cn/favicon.ico" />
     <meta name="robots" content="none"/>
+    <style>
+        .ui.text.container{
+            font-size: 1.04285714rem;
+        }
+    </style>
 </head>
 <body>
 <br/>
 
 
 <div class="ui text container" style="max-width: none !important; width: 1200px">
-	<h3>NBA赛事直播小程序-在线接口文档</h3>
+	<h3>IT开发者-在线接口文档</h3>
     <div class="ui floating message">
         <div class="ui grid container" style="max-width: none !important;">
 
