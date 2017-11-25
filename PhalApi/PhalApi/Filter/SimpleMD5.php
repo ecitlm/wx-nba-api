@@ -78,7 +78,6 @@ class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter
         foreach ($params as $val) {
             $paramsStrExceptSign .= $val;
         }
-
         return MD5($paramsStrExceptSign);
 
     }

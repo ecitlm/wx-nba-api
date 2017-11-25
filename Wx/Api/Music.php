@@ -2,8 +2,8 @@
 
 /**
  * 酷狗音乐web端接口
- * User: Administrator
- * Date: 2017/6/22
+ * User: ecitlm
+ * Date: 2017/11/25
  * Time: 16:55
  */
 class Api_Music extends PhalApi_Api
