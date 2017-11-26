@@ -47,6 +47,15 @@ class Api_Music extends PhalApi_Api
             'song_info1' => array(
                 'hash' => array('name' => 'hash', 'type' => 'string', 'min' => 1, 'default' => '1', 'require' => true, 'desc' => '音乐的hash'),
             ),
+            'lrc' => array(
+                'hash' => array('name' => 'hash', 'type' => 'string', 'min' => 1, 'default' => '1', 'require' => true, 'desc' => '音乐的hash'),
+            ),
+            'mv' => array(
+                'mvhash' => array('name' => 'mvhash', 'type' => 'string', 'min' => 1, 'default' => '1', 'require' => true, 'desc' => '音乐mv的id'),
+            ),
+            'relate_mv' => array(
+                'mvhash' => array('name' => 'mvhash', 'type' => 'string', 'min' => 1, 'default' => '1', 'require' => true, 'desc' => '音乐mv的id'),
+            ),
             'search' => array(
                 'keyword' => array('name' => 'keyword', 'type' => 'string', 'min' => 1, 'default' => '1', 'require' => true, 'desc' => '关键字'),
             ),
@@ -192,6 +201,47 @@ class Api_Music extends PhalApi_Api
         $hash = $this->hash;
         $res = $this->mobile_curl("http://www.kugou.com/yy/index.php?r=play/getdata&hash={$hash}");
         return json_decode($res, true);
+    }
+
+    /**
+     * 歌曲MV接口
+     * @desc 获取音乐mv
+     * @url   http://192.168.1.2:8080/?service=music.mv
+     * @return 对象 mvdata   mv视频列表(sq/rq/le)
+     */
+    public function mv()
+    {
+        $mvhash = $this->mvhash;
+        $res = $this->mobile_curl("http://m.kugou.com/app/i/mv.php?cmd=100&hash={$mvhash}&ismp3=1&ext=mp4");
+        return json_decode($res, true);
+    }
+
+
+    /**
+     * 相关MV视频接口
+     * @desc 获取音乐mv相关的MV数据
+     * @url   http://192.168.1.2:8080/?service=music.mv
+     * @return 对象 info   mv数据列表
+     */
+    public function relate_mv()
+    {
+
+        $mvhash = $this->mvhash;
+        $res = $this->mobile_curl("http://service.mobile.kugou.com/v1/mv/relate?mv_hash={$mvhash}");
+        return json_decode($res, true)['data'];
+    }
+
+    /**
+     * 歌曲歌词接口
+     * @desc 获取音乐歌曲的歌词
+     * @url   http://192.168.1.2:8080/?service=music.lrc
+     * @return string data   歌词字符串
+     */
+    public function lrc()
+    {
+        $hash = $this->hash;
+        $res = $this->mobile_curl("http://m.kugou.com/app/i/krc.php?cmd=100&hash={$hash}&timelength=3012000");
+        return $res;
     }
 
     /**
