@@ -67,7 +67,6 @@ class Api_Music extends PhalApi_Api
 
     /**
      * 音乐新歌榜
-     * @method GET请求
      * @desc 获取云音新歌榜
      * @url http://192.168.1.2:8080/?service=music.new_songs
      */
@@ -82,7 +81,6 @@ class Api_Music extends PhalApi_Api
 
     /**
      * 音乐排行榜接口
-     * @method GET请求
      * @desc 获取音乐排行榜
      * @url http://192.168.1.2:8080/?service=music.rank_list
      */
@@ -96,7 +94,6 @@ class Api_Music extends PhalApi_Api
 
     /**
      * 音乐歌单列表
-     * @method GET请求
      * @desc 获取音乐歌单
      * @url http://192.168.1.2:8080/?service=music.plist
      */
@@ -109,7 +106,6 @@ class Api_Music extends PhalApi_Api
 
     /**
      * 歌单下的音乐列表
-     * @method GET请求
      * @desc   歌单下的某个歌单下的音乐列表
      * @url    http://192.168.1.2:8080/?service=music.plist_list&specialid=126317
      */
@@ -125,7 +121,6 @@ class Api_Music extends PhalApi_Api
 
     /**
      * 歌手分类接口
-     * @method GET请求
      * @desc   获取歌手分类
      * @url    http://192.168.1.2:8080/?service=music.singer_class
      * @return int     classid    id
@@ -140,7 +135,6 @@ class Api_Music extends PhalApi_Api
 
     /**
      * 歌手列表接口
-     * @method GET请求
      * @desc 歌手分类下面的歌手列表
      * @url    http://192.168.1.2:8080/?service=music.singer_list
      * @return int     singerid   歌手的id
@@ -212,7 +206,7 @@ class Api_Music extends PhalApi_Api
     public function mv()
     {
         $mvhash = $this->mvhash;
-        $res = $this->mobile_curl("http://m.kugou.com/app/i/mv.php?cmd=100&hash={$mvhash}&ismp3=1&ext=mp4");
+        $res = $this->mobile_curl($this->music_api ."app/i/mv.php?cmd=100&hash={$mvhash}&ismp3=1&ext=mp4");
         return json_decode($res, true);
     }
 
@@ -240,7 +234,7 @@ class Api_Music extends PhalApi_Api
     public function lrc()
     {
         $hash = $this->hash;
-        $res = $this->mobile_curl("http://m.kugou.com/app/i/krc.php?cmd=100&hash={$hash}&timelength=3012000");
+        $res = $this->mobile_curl($this->music_api ."app/i/krc.php?cmd=100&hash={$hash}&timelength=3012000");
         return $res;
     }
 
