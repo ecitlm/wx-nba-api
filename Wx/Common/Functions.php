@@ -3,7 +3,7 @@ class Common_Functions
 {
     /**
      * @param $url
-     * @param bool $status
+     * @param bool $status 判断curl请求为ajax请求
      * @return mixed
      */
     public function HttpGet($url, $status = false)

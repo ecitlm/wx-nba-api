@@ -156,7 +156,7 @@ $table_color_arr = explode(" ", "red orange yellow olive teal blue violet purple
     <link href="//cdn.bootcss.com/semantic-ui/2.2.2/semantic.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/semantic-ui/2.2.2/semantic.min.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="  https://code.it919.cn/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://code.it919.cn/favicon.ico" />
     <meta name="robots" content="none"/>
     <style>
         .ui.text.container{
@@ -231,8 +231,17 @@ $table_color_arr = explode(" ", "red orange yellow olive teal blue violet purple
 
             </div>
         </div>
-        <div class="ui blue message">
-            <strong>温馨提示：</strong> 此接口服务列表根据后台代码自动生成，可在接口类的文件注释的第一行修改左侧菜单标题。
+        <div class="ui raised segment">
+            <span class="ui red ribbon label">接口签名参数说明</span>
+            <div class="ui message">
+                <p> 接口请求签名，客户端与服务端约定好一个appkey</p>
+                <ol>
+                    <li>排除签名参数（sign和接口的service）</li>
+                    <li>将剩下的全部参数和appkey，按参数名字进行字典升序排序</li>
+                    <li>将排序好的参数，全部用字符串拼接起来</li>
+                    <li>进行md5运算，生成签名sign</li>
+                </ol>
+            </div>
         </div>
         <p>&copy; Powered  By <a href="http://code.it919.cn/" target="_blank">IT开发者 <?php echo PHALAPI_VERSION; ?></a> <p>
     </div>
