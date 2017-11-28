@@ -115,7 +115,6 @@ class Api_Photo extends PhalApi_Api
     {
         $id=$this->id;
         $res = $this->domain->meizi_detail($id);
-
         return $res;
     }
 

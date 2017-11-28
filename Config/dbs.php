@@ -24,7 +24,7 @@ return array(
     'tables' => array(
         //通用路由
         '__default__' => array(
-            'prefix' => 'b_',
+            'prefix' => '',
             'key' => 'id',
             'map' => array(
                 array('db' => 'db_blog'),
