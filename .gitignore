@@ -19,3 +19,8 @@ Demo/Api/DogstarTest.php
 blog/
 blog/*
 Public/blog/*
+Config/dbs.php
+./Config/dbs.php;
+/Config/dbs.php
+/config/dbs.php
+.gitignore
