@@ -8,11 +8,11 @@ return array(
      * DB数据库服务器集群
      */
     'servers' => array(
-        'db_blog' => array(                   //服务器标记
-            'host'      => 'localhost',               //数据库域名
-            'name'      => 'blog_cms',               //数据库名字
-            'user'      => 'root',               //数据库用户名
-            'password'  => '',           //数据库密码
+        'tpcms' => array(                   //服务器标记
+            'host'      => '120.27.93.128',               //数据库域名
+            'name'      => 'tpcms',               //数据库名字
+            'user'      => 'tpcms',               //数据库用户名
+            'password'  => 'tpcms2017',           //数据库密码
             'port'      => '3306',               //数据库端口
             'charset'   => 'UTF8',            //数据库字符集
         ),
@@ -27,7 +27,7 @@ return array(
             'prefix' => '',
             'key' => 'id',
             'map' => array(
-                array('db' => 'db_blog'),
+                array('db' => 'tpcms'),
             ),
         ),
     ),

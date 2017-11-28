@@ -54,10 +54,10 @@ class Domain_Photo extends PhalApi_Api
      */
     public function meizi_detail($id)
     {
-       // $data = DI()->notorm->photo_detail->where('id', $id)->fetch('list');
-        $data = DI()->notorm->photo_detail->select('list')->where('id', $id)->fetch('list');
-        $data = json_decode($data, true);
+        $data = DI()->notorm->photo_detail->select("title,list,tag")->where('id', $id)->fetch();
+
         if (!empty($data)) {
+            $data['list'] = json_decode($data['list'], true);
             return $data;
         } else {
             $url = "http://www.meizitu.com/a/{$id}.html";
