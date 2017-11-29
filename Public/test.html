@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="ecitlm">
+  <meta name="Author" content="ecitlm">
+  <meta name="Keywords" content="ecitlm">
+  <meta name="Description" content="ecitlm">
+  <title>Document</title>
+ </head>
+ <body>
+
+ 222
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+      function ajax(date) {
+          console.log(date)
+          $.ajax({
+              url: 'http://192.168.1.2:8080/?service=Web.daily&date='+date,
+              type: 'GET',
+              dataType: 'JSON',
+              data: {},
+          })
+              .done(function(res) {
+                  console.log(res);
+                  console.log("============================>"+date)
+              })
+              .fail(function() {
+              })
+              .always(function() {
+              });
+      }
+
+      for(var i=20170101;i<=20170131;i++){
+          setTimeout(function() {}, 1000)
+          ajax(i);
+          setTimeout(function() {}, 1000)
+
+      }
+
+  </script>
+
+ </body>
+</html>
