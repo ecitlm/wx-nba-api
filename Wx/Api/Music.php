@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 酷狗音乐web端接口
+ * KG音乐web端接口
  * User: ecitlm
  * Date: 2017/11/25
  * Time: 16:55

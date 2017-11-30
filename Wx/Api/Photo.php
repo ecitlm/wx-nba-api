@@ -31,7 +31,10 @@ class Api_Photo extends PhalApi_Api
             'meizi_detail' => array(
                 'id' => array('name' => 'id', 'type' => 'int', 'require' => true, 'max' => '9999', 'min' => '1', 'default' => '', 'desc' => '详情id'),
             ),
-
+            'taobao_mm' => array(
+                'sign' => array('name' => 'sign', 'require' => false, 'desc' => '接口签名'),
+                'timestamp' => array('name' => 'timestamp', 'type' => 'string', 'require' => false, 'desc' => '时间戳')
+            ),
         );
     }
 
@@ -40,7 +43,7 @@ class Api_Photo extends PhalApi_Api
      * @desc 获取花瓣美图数据列表、每次随机返回20条数据
      * @url http://192.168.1.2:8080/?service=Photo.hb
      * @return string url   图片地址
-     * @return string title   图片名字
+     * @return string title 图片名字
      * @return string desc   描述
      * @return array like   点赞数
      */
@@ -83,13 +86,12 @@ class Api_Photo extends PhalApi_Api
      * @url http://192.168.1.2:8080/?service=Photo.meizi_detail&id=5585
      * @return string title  标题
      * @return string tag    标签
-     * @return 数组    list   图片集合
+     * @return array  list   图片集合
      */
     public function meizi_detail()
     {
-        $id=$this->id;
+        $id = $this->id;
         $res = $this->domain->meizi_detail($id);
         return $res;
     }
-
 }
