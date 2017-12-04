@@ -24,6 +24,7 @@ return array(
      */
     'service_whitelist' => array(
         'Index.index',
+        'Common.*'
     ),
 
     /**
@@ -31,8 +32,8 @@ return array(
      */
     'apiFilterRules' => array(
         'Index.index',
-        'Nba.img',
-        'Nba.website',
+        'Common.huaban',
+        'Common.website',
     ),
 
     /**
