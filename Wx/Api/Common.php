@@ -80,12 +80,12 @@ class Api_Common extends PhalApi_Api
      * 转发图片
      * @method GET请求
      * @desc 转发图片代理地址
-     * @url http://192.168.1.2:8080/?service=Nba.huaban&imgurl=ba438330aa6a90bfa9d5a1a98803247c861f89c931b59
+     * @url http://192.168.1.2:8080/?service=Common.huaban&imgurl=c9620979e1efeeed43a12534687fa8d20f03c1436e0a1-FeC2tz
      */
     public function huaban()
     {
-        $filename ="//img.hb.aicdn.com/". $this->imgurl;
-        header('content-type: image/jpeg');
+        $filename ="http://img.hb.aicdn.com/". $this->imgurl;
+        header('content-type: image/png');
         echo file_get_contents($filename);
         die();
     }
