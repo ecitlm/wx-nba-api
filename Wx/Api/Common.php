@@ -85,7 +85,7 @@ class Api_Common extends PhalApi_Api
     public function huaban()
     {
         $filename ="http://img.hb.aicdn.com/". $this->imgurl;
-        header('content-type: image/png');
+        header('content-type: image/jpeg');
         echo file_get_contents($filename);
         die();
     }
