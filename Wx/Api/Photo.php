@@ -35,6 +35,9 @@ class Api_Photo extends PhalApi_Api
                 'sign' => array('name' => 'sign', 'require' => false, 'desc' => '接口签名'),
                 'timestamp' => array('name' => 'timestamp', 'type' => 'string', 'require' => false, 'desc' => '时间戳')
             ),
+            'sina_img' => array(
+                'page' => array('name' => 'page', 'type' => 'int', 'require' => true, 'max' => '9999', 'min' => '1', 'require' => true, 'desc' => '分页')
+            ),
         );
     }
 
@@ -92,6 +95,18 @@ class Api_Photo extends PhalApi_Api
     {
         $id = $this->id;
         $res = $this->domain->meizi_detail($id);
+        return $res;
+    }
+
+    /**
+     * 新浪图片接口
+     * @desc 获取新浪图片爬取列表
+     * @url http://192.168.1.2:8080/?service=Photo.sina_img&page=100
+     * @return array  data   图片集合
+     */
+    public function sina_img(){
+        $page = $this->page;
+        $res = $this->domain->sina_img($page);
         return $res;
     }
 }

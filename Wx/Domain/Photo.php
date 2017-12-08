@@ -78,4 +78,17 @@ class Domain_Photo extends PhalApi_Api
             return $arr;
         }
     }
+
+    //获取新浪图片
+    public function sina_img($page){
+        $url = "http://jandan.net/ooxx/page-{$page}#comments";
+        $res = DI()->functions->HttpGet($url);
+        \phpQuery::newDocumentHTML($res);
+        $arr = array();
+        $list = pq('.img-hash');
+        foreach ($list as $li) {
+            array_push($arr, pq($li)->text());
+        }
+        return $arr;
+    }
 }
