@@ -2,7 +2,7 @@
 /**
  * 统一初始化
  */
- 
+
 /** ---------------- 根目录定义，自动加载 ---------------- **/
 
 date_default_timezone_set('Asia/Shanghai');
@@ -24,11 +24,11 @@ DI()->config = new PhalApi_Config_File(API_ROOT . '/Config');
 DI()->debug = !empty($_GET['__debug__']) ? true : DI()->config->get('sys.debug');
 
 if (DI()->debug) {
-    // 启动追踪器
-    DI()->tracer->mark();
+	// 启动追踪器
+	DI()->tracer->mark();
 
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'On'); 
+	error_reporting(E_ALL);
+	ini_set('display_errors', 'On');
 }
 
 // 日记纪录
@@ -42,22 +42,19 @@ SL('zh_cn');
 
 /** ---------------- 定制注册 可选服务组件 ---------------- **/
 
-
 // 签名验证服务
 DI()->filter = 'PhalApi_Filter_SimpleMD5';
-
-
 
 /**
 // 缓存 - Memcache/Memcached
 DI()->cache = function () {
-    return new PhalApi_Cache_Memcache(DI()->config->get('sys.mc'));
+return new PhalApi_Cache_Memcache(DI()->config->get('sys.mc'));
 };
  */
 
 /**
 // 支持JsonP的返回
 if (!empty($_GET['callback'])) {
-    DI()->response = new PhalApi_Response_JsonP($_GET['callback']);
+DI()->response = new PhalApi_Response_JsonP($_GET['callback']);
 }
  */
