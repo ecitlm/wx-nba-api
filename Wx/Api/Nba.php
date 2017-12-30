@@ -80,9 +80,8 @@ class Api_Nba extends PhalApi_Api {
 		$date = $this->date;
 		$res = $this->HttpGet("https://nb.3g.qq.com/nba/api/schedule@getList?md={$date}&sid=");
 		$arr = json_decode($res, true)['schedule@getList'];
-		$arr['data']['list'] = [];
-		return $arr;
-		//return json_decode($res, true)['schedule@getList'];
+		
+		return json_decode($res, true)['schedule@getList'];
 	}
 
 	/**
@@ -222,8 +221,7 @@ class Api_Nba extends PhalApi_Api {
 				array_push($newArr, $arr[$k]);
 			}
 		}
-		//return $newArr;
-		return [];
+		return $newArr;
 	}
 
 	/**
