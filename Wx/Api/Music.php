@@ -250,3 +250,4 @@ class Api_Music extends PhalApi_Api
         return json_decode($res, true)['data']['info'];
     }
 }
+
