@@ -104,7 +104,8 @@ class Api_Photo extends PhalApi_Api
      * @url http://192.168.1.2:8080/?service=Photo.sina_img&page=100
      * @return array  data   图片集合
      */
-    public function sina_img(){
+    public function sina_img()
+    {
         $page = $this->page;
         $res = $this->domain->sina_img($page);
         return $res;

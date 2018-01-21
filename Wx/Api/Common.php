@@ -38,7 +38,7 @@ class Api_Common extends PhalApi_Api
      * @desc 关于个人的JSON数据
      * @url http://192.168.1.2:8080/?service=Common.website
      */
-    public function website()
+    private function website()
     {
         return [
             'name' => "没有故事的小明同学",
