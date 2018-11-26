@@ -10,7 +10,7 @@ return array(
 	 */
 	'apiCommonRules' => array(
 		'sign' => array('name' => 'sign', 'require' => true, 'desc' => '接口签名'),
-		'timestamp' => array('name' => 'timestamp', 'type' => 'string', 'require' => true, 'desc' => '时间戳'),
+		'timestamp' => array('name' => 'timestamp', 'type' => 'string', 'require' => false, 'desc' => '时间戳'),
 	),
 
 	/**
@@ -32,6 +32,7 @@ return array(
 	 */
 	'apiFilterRules' => array(
 		'Index.index',
+        'Web.daily',
 		'Common.huaban',
 		'Common.website',
 	),

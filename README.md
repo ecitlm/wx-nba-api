@@ -3,6 +3,7 @@ wx-nba-api 是为nba小程序[wx-nba](https://github.com/ecitlm/wx-nba)提供的
 * 拦截器，
 * 接口签名校验、
 接口服务列表
+> 如果熟悉`php`,可以下载项目代码自己部署
 [在线地址：](http://wxapp.it919.cn/wx/listAllApis.php)
 http://wxapp.it919.cn/wx/listAllApis.php
 ![图片](https://dn-coding-net-production-pp.qbox.me/2e4887a6-898c-42b9-8662-6657b4bcf1ea.png)

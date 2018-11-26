@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function ajax(date) {
+        date=date+20180501;
+        var timestamp=new Date().getTime();
+        var url = `http://192.168.1.2:8080/?service=Web.daily&date=${date}&timestamp=${timestamp}&sign=1`;
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'JSON'
+        })
+            .done(function (res) {
+                console.log(res);
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+            });
+    }
+
+    for (var i = 1; i < 12; i++) {
+        (function (i) {
+            setTimeout(function () {
+                console.log("发起请求：" + i);
+                ajax(i)
+            }, i * 1000)
+        })(i)
+    }
+
+
+</script>
+</body>
+</html>

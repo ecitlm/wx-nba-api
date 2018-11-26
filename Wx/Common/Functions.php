@@ -69,4 +69,9 @@ class Common_Functions
         }
         return $outputstr;
     }
+
+    function getIp(){
+        $realip=$_SERVER["REMOTE_ADDR"];
+        return $realip;
+    }
 }
