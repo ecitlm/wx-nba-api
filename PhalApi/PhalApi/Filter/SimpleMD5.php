@@ -47,10 +47,10 @@ class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter
                 throw new PhalApi_Exception_BadRequest("缺少时间戳参数", 6);
             }
 
-            //一个接口请求能使用300秒有效期
+            //一个接口请求能使用3000秒有效期
             $times = time() * 1000;
-            if ($times - floatval($timestamp) > 300000) {
-                throw new PhalApi_Exception_BadRequest("接口请求超时", 6);
+            if ($times - floatval($timestamp) > 3000000) {
+                 throw new PhalApi_Exception_BadRequest("接口请求超时", 6);
             }
 
             if (empty($sign)) {

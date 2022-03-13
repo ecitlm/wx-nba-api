@@ -55,6 +55,10 @@ class Api_Nba extends PhalApi_Api {
                 'playerId' => array('name' => 'playerId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '球员id'),
                 'seasonId' => array('name' => 'seasonId', 'type' => 'int', 'min' => '', 'default' => '', 'require' => true, 'desc' => '赛季id'),
             ),
+            //
+            'statDetail'=>array(
+                'mid' => array('name' => 'mid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '直播ID')
+            ),
             'news_comments' => array(
                 'docid' => array('name' => 'docid', 'type' => 'string', 'min' => '', 'default' => '', 'require' => true, 'desc' => '文章详情id'),
             ),
@@ -81,9 +85,9 @@ class Api_Nba extends PhalApi_Api {
      */
     public function schedule() {
         $date = $this->date;
-        $res = $this->HttpGet("https://nb.3g.qq.com/nba/api/schedule@getList?md={$date}&sid=");
-        $arr = json_decode($res, true)['schedule@getList'];
-        return json_decode($res, true)['schedule@getList'];
+        $res = $this->HttpGet("https://nb.3g.qq.com/nba/api/schedule@getListNew?md={$date}");
+        $arr = json_decode($res, true)["schedule@getListNew"];
+        return $arr;
     }
 
     /**
@@ -273,6 +277,19 @@ class Api_Nba extends PhalApi_Api {
         $res = $this->HttpGet("https://matchweb.sports.qq.com/player/stats?playerId={$playerId}&seasonId={$seasonId}&seasonType=1&from=h5");
         return json_decode($res, true)['data'];
     }
+
+
+    /**
+     *  直播页面详情
+     * @method GET请求
+     * @desc 直播页面详情
+     * @url http://192.168.1.2:8080/?service=Nba.statDetail&mid=xxxx
+     */
+    public function statDetail () {
+        $mid = $this->mid;
+        $res = $this->HttpGet("https://app.sports.qq.com/match/statDetail?mid={$mid}");
+        return json_decode($res, true)['data'];
+    }
     /**
      *  关于作者
      * @method GET请求
@@ -282,12 +299,13 @@ class Api_Nba extends PhalApi_Api {
      */
     public function website() {
         $info=[
-            'name' => "没有故事的小明同学",
+            'name' => "没有故事的明同学",
             'job' => "Web开发工程师",
             'icon' => "https://wapapi.it919.cn/static/images/zixia.jpg",
             'address' => "深圳市南山区高新园",
             'latitude' => "22.539728",
-            'longitude' => "113.961553",
+            'longitude' => "113.
+            961553",
             'github' => "https://github.com/ecitlm",
             'blog' => "https://blog.it919.cn",
             'mail' => "ecitlm@163.com",

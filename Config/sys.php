@@ -21,12 +21,11 @@ return array(
      * 加密
      */
     'crypt' => array(
-        'mcrypt_iv' => '12345678',      //8位
+        'mcrypt_iv' => '12345678', // 8位
     ),
-
-
     /**
      * 签名appkey
      */
     'appkey' => '6fc18957ce391f84a7ce34ce13cd99c4',
+    'need_sign' => false,
 );
